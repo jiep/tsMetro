@@ -9,7 +9,7 @@ describe('Metro', () => {
     var metro : Metro;
     var stations : Array<Station>;
 
-    before(function () {
+    before(() => {
         let station1 : Station = new Station(1, "Sol");
         let station2 : Station = new Station(2, "Atocha");
         let station3 : Station = new Station(3, "Chamartín");
@@ -30,7 +30,7 @@ describe('Metro', () => {
         var atocha = new Station(2, "Atocha");
         var chamartin = new Station(3, "Chamartín");
 
-        beforeEach(function () {
+        beforeEach(() => {
             metro = new Metro(stations);
         });
 
@@ -50,6 +50,34 @@ describe('Metro', () => {
             let new_station = new Station(4, "Nuevos Ministerios");
             metro.setStations = [new_station];
             expect(metro.getStations.length).to.equal(1);
+        });
+    });
+
+    describe('Get stations number', () => {
+
+        before(() => {
+          metro = new Metro([]);
+        });
+
+        it('should return the number of stations', () => {
+          let stations_numbers = metro.getStationsNumber();
+          expect(stations_numbers).to.equal(0);
+        });
+    });
+
+    describe('Add new station', () => {
+
+        before(() => {
+          metro = new Metro([]);
+        });
+
+        it('should add a new station to the metro', () => {
+          let station : Station = new Station(1, "Sol");
+          metro.addStation(station);
+          expect(metro.getStationsNumber()).to.equal(1);
+          expect(metro.getStations[0].getName).to.equal("Sol");
+          expect(metro.getStations[0].getId).to.equal(1);
+          expect(metro.getStations[1]).to.be.undefined;
         });
     });
 });
