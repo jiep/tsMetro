@@ -8,7 +8,7 @@ export default class Station {
         this.id = id;
     }
 
-    get getName(): string {
+    get getName() : string {
       return this.name;
     }
 
