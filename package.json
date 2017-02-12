@@ -4,9 +4,11 @@
   "description": "Calculate the shortest path between two given metro stations",
   "main": "index.js",
   "scripts": {
-    "watch": "./node_modules/gulp/bin/gulp.js watch",
-    "build": "./node_modules/gulp/bin/gulp.js build",
-    "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
+    "watch": "node_modules/gulp/bin/gulp.js watch",
+    "build": "node_modules/gulp/bin/gulp.js build",
+    "test": "_mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts",
+    "cover": "istanbul cover -e .ts _mocha -- --compilers ts:ts-node/register test/**/*.test.ts",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +18,12 @@
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.46",
     "chai": "^3.5.0",
+    "coveralls": "^2.11.16",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.1.1",
+    "istanbul": "1.1.0-alpha.1",
     "mocha": "^3.1.2",
+    "mocha-lcov-reporter": "^1.2.0",
     "ts-node": "^1.6.1",
     "typescript": "^2.0.6"
   }
