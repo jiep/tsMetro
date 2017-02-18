@@ -8,6 +8,8 @@ describe('WeightedGraph', () => {
 
     var graph : WeightedGraph;
     var directed_graph : WeightedGraph;
+    var g : WeightedGraph = new WeightedGraph(GraphClass.DIRECTED, 5);
+
 
 
     describe('Constructor', () => {
@@ -44,6 +46,42 @@ describe('WeightedGraph', () => {
     describe('Get weight', () => {
       it('should return the weight between two nodes of the graph', () => {
         expect(graph.getWeight(1,1)).to.equal(Number.POSITIVE_INFINITY);
+      });
+    });
+
+    describe('Get shortest path', () => {
+
+      beforeEach(() => {
+        g.connect(1,2,2);
+        g.connect(0,1,1);
+        g.connect(2,3,2);
+        g.connect(0,3,5);
+        g.connect(3,4,1);
+        g.connect(2,4,4);
+        g.connect(1,4,6);
+        g.connect(2,0,2);
+      });
+
+      it('show return the shortest path', ()=>{
+        let weighted_matrix : number[][] = g.getWeightedMatrix;
+        let infinity = Number.POSITIVE_INFINITY;
+        //console.log("W", weighted_matrix);
+        let expected_matrix : number[][] = [
+          [infinity, 1, infinity, 5, infinity],
+          [infinity, infinity, 2, infinity, 6],
+          [2, infinity, infinity, 2, 4],
+          [infinity, infinity, infinity, infinity, 1],
+          [infinity, infinity, infinity, infinity, infinity]
+        ];
+        //console.log("E", expected_matrix);
+        expect(weighted_matrix).to.eql(expected_matrix);
+        let out = g.shortestPath(0,4);
+        expect(out[0]).to.eql([0,3,4]);
+        expect(out[1]).to.equal(6);
+
+        let out1 = g.shortestPath(2,3);
+        expect(out1[0]).to.eql([2,3]);
+        expect(out1[1]).to.equal(2);
       });
     });
 
