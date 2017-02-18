@@ -8,7 +8,7 @@ describe('WeightedGraph', () => {
 
     var graph : WeightedGraph;
     var directed_graph : WeightedGraph;
-    var g : WeightedGraph = new WeightedGraph(GraphClass.DIRECTED, 5);
+    var g : WeightedGraph = new WeightedGraph(GraphClass.UNDIRECTED, 5);
 
 
 
@@ -65,23 +65,23 @@ describe('WeightedGraph', () => {
       it('show return the shortest path', ()=>{
         let weighted_matrix : number[][] = g.getWeightedMatrix;
         let infinity = Number.POSITIVE_INFINITY;
-        //console.log("W", weighted_matrix);
+        console.log("W", weighted_matrix);
         let expected_matrix : number[][] = [
-          [infinity, 1, infinity, 5, infinity],
-          [infinity, infinity, 2, infinity, 6],
-          [2, infinity, infinity, 2, 4],
-          [infinity, infinity, infinity, infinity, 1],
-          [infinity, infinity, infinity, infinity, infinity]
+          [infinity, 1, 2, 5, infinity],
+          [1, infinity, 2, infinity, 6],
+          [2, 2, infinity, 2, 4],
+          [5, infinity, 2, infinity, 1],
+          [infinity, 6, 4, 1, infinity]
         ];
-        //console.log("E", expected_matrix);
+        console.log("E", expected_matrix);
         expect(weighted_matrix).to.eql(expected_matrix);
         let out = g.shortestPath(0,4);
-        expect(out[0]).to.eql([0,3,4]);
-        expect(out[1]).to.equal(6);
+        expect(out[0]).to.eql([0,2,3,4]);
+        expect(out[1]).to.equal(5);
 
-        let out1 = g.shortestPath(2,3);
-        expect(out1[0]).to.eql([2,3]);
-        expect(out1[1]).to.equal(2);
+        let out2 = g.shortestPath(2,1);
+        expect(out2[0]).to.eql([2,1]);
+        expect(out2[1]).to.equal(2);
       });
     });
 
