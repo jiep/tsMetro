@@ -45,4 +45,14 @@ describe('Station', () => {
             expect(new_name).to.equal("Chamartín");
         });
     });
+
+    describe('To String', () => {
+      before(()=>{
+        station = new Station(1, "Atocha");
+      });
+
+      it("should return a string with the information of the object", ()=>{
+        expect(station.toString()).to.equal("id: 1, name: Atocha");
+      });
+    });
 });

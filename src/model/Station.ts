@@ -8,20 +8,24 @@ export default class Station {
         this.id = id;
     }
 
-    get getName() : string {
+    public get getName() : string {
       return this.name;
     }
 
-    get getId(): number {
+    public get getId(): number {
       return this.id;
     }
 
-    set setName(name:string){
+    public set setName(name:string){
       this.name = name;
     }
 
-    set setId(id:number){
+    public set setId(id:number){
       this.id = id;
+    }
+
+    public toString() : string {
+      return `id: ${this.id}, name: ${this.name}`;
     }
 
 }
