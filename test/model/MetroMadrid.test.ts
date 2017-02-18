@@ -23,11 +23,8 @@ describe('Metro Madrid', () => {
   describe('Find the station by id', () => {
     it("should return the the station given the id", () => {
       let s1 : Station = metro.getStationById(1);
-      metro.getStations.forEach(x => {
-        console.log(JSON.stringify(x.toString()));
-        //return x.getId == 1;
-      });
-      expect(s1).to.eql({});
+      let station = new Station(1, "Acacias");
+      expect(s1).to.eql(station);
     });
   });
 
@@ -35,7 +32,6 @@ describe('Metro Madrid', () => {
     it("should return the shortest path between the two given stations", () => {
       let station1 : Station = metro.getStationById(1);
       let station2 : Station = metro.getStationById(2);
-      //console.log("Station1", station1);
       expect(metro.getShortestPath(station1, station2)).to.eql([]);
     });
   });

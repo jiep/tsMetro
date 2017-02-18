@@ -11,7 +11,9 @@ export default class MetroMadrid extends Metro {
   private distances_graph : WeightedGraph;
 
   constructor(){
-    super(data);
+    let stations : Array<Station> = [];
+    data.forEach(s => stations.push(new Station(s.id, s.name)));
+    super(stations);
     let n = data.length;
     this.distances_graph = new WeightedGraph(GraphClass.UNDIRECTED, n);
     distances.forEach((distance) =>{
