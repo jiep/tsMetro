@@ -23,4 +23,8 @@ export default class Metro {
   addStation(station : Station){
     this.stations.push(station);
   }
+
+  public getStationById(id : number) : Station {
+    return this.getStations.find(x => x.getId === id);
+  }
 }

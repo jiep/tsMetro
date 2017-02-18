@@ -8,11 +8,11 @@ describe('Metro', () => {
 
     var metro : Metro;
     var stations : Array<Station>;
+    var station1 : Station = new Station(1, "Sol");
+    var station2 : Station = new Station(2, "Atocha");
 
     before(() => {
-        let station1 : Station = new Station(1, "Sol");
-        let station2 : Station = new Station(2, "Atocha");
-        let station3 : Station = new Station(3, "Chamartín");
+        var station3 : Station = new Station(3, "Chamartín");
         stations = [station1, station2, station3];
     });
 
@@ -79,5 +79,19 @@ describe('Metro', () => {
           expect(metro.getStations[0].getId).to.equal(1);
           expect(metro.getStations[1]).to.be.undefined;
         });
+    });
+
+    describe('Get station by id', () => {
+      before(() => {
+        metro = new Metro(stations);
+      });
+
+      it('should return the station with the specific id', () => {
+        let expected_station = metro.getStationById(1);
+        expect(expected_station).to.eql(station1);
+
+        let expected_station2 = metro.getStationById(2);
+        expect(expected_station2).to.eql(station2);
+      });
     });
 });
