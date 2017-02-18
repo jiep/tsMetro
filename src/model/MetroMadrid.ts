@@ -2,7 +2,6 @@ import Metro from "./Metro";
 import WeightedGraph from "../graphs/WeightedGraph";
 import GraphClass from "../graphs/GraphClass";
 import Station from "./Station";
-import * as _ from "underscore";
 declare function require(name:string);
 const data = require("../data/stations");
 const distances = require("../data/distances");
