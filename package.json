@@ -11,9 +11,10 @@
     "cover": "istanbul cover -e .ts _mocha -- --compilers ts:ts-node/register test/**/*.test.ts",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["nodejs", "typescript"],
+  "author": "José Ignacio Escribano",
+  "description": "Calculate the shortest path between two given metro stations",
+  "license": "MIT",
   "devDependencies": {
     "@types/body-parser": "0.0.34",
     "@types/chai": "^3.4.34",
