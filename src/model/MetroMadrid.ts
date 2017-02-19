@@ -27,9 +27,12 @@ export default class MetroMadrid extends Metro {
       stations_and_distance = this.distances_graph.shortestPath(source.getId, destination.getId);
       var stations = stations_and_distance[0];
       var distance = stations_and_distance[1];
+      var a = [];
+      stations.forEach(station_id => a.push(this.getStationById(station_id)));
+    }else{
+      return [source, 0];
     }
-    var a = [];
-    stations.forEach(station_id => a.push(this.getStationById(station_id)));
+
     return [a, distance];
   }
 
