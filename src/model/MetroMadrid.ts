@@ -21,18 +21,16 @@ export default class MetroMadrid extends Metro {
     });
   }
 
-  public getShortestPath(source : Station, destination : Station) : Array<Station> {
-    let stations : Array<Station> = [];
+  public getShortestPath(source : Station, destination : Station) : Array<any> {
+    let stations_and_distance : Array<any> = [];
     if(source.getId != destination.getId){
-      stations = this.distances_graph.shortestPath(source.getId, destination.getId);
+      stations_and_distance = this.distances_graph.shortestPath(source.getId, destination.getId);
+      var stations = stations_and_distance[0];
+      var distance = stations_and_distance[1];
     }
-
-    stations.forEach(station_id => {
-      console.log("Id", station_id, "Station", this.getStationById(station_id.getId));
-      return this.getStationById(station_id.getId)
-    });
-
-    return stations;
+    var a = [];
+    stations.forEach(station_id => a.push(this.getStationById(station_id)));
+    return [a, distance];
   }
 
 }

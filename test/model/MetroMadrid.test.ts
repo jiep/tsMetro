@@ -29,10 +29,13 @@ describe('Metro Madrid', () => {
   });
 
   describe('Shortest path', () =>{
-    it("should return the shortest path between the two given stations", () => {
+    it("should return the shortest path between the two given stations", done => {
       let station1 : Station = metro.getStationById(1);
       let station2 : Station = metro.getStationById(2);
-      expect(metro.getShortestPath(station1, station2)).to.eql([]);
+      let expected = [1, 214, 136, 179, 50, 110, 254, 10, 111, 175, 72, 194, 159, 52, 2];
+      let stations_and_distance = metro.getShortestPath(station1, station2);
+      let distance = stations_and_distance[1];
+      expect(distance).to.equal(18041);
     });
   });
 });
